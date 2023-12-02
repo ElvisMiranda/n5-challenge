@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using N5.Challenge.Domain.Abstractions;
 using N5.Challenge.Domain.Permissions;
+using N5.Challenge.Domain.PermissionTypes;
 using N5.Challenge.Infrastructure.Repositories;
 
 namespace N5.Challenge.Infrastructure;
@@ -22,6 +23,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IPermissionRepository, PermissionRepository>();
+        services.AddScoped<IPermissionTypeRepository, PermissionTypeRepository>();
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 

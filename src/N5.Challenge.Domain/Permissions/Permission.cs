@@ -1,20 +1,36 @@
 ﻿using N5.Challenge.Domain.Abstractions;
-using N5.Challenge.Domain.PermissionTypes;
 
 namespace N5.Challenge.Domain.Permissions
 {
-    public sealed class Permission(
-        int id,
-        string employeeForename,
-        string employeeSurname,
-        int permissionTypeId,
-        PermissionType permissionType,
-        DateOnly permissionDate) : Entity(id)
+    public sealed class Permission : Entity
     {
-        public string EmployeeForename { get; } = employeeForename;
-        public string EmployeeSurname { get; } = employeeSurname;
-        public int PermissionTypeId { get; } = permissionTypeId;
-        public DateOnly PermissionDate { get; } = permissionDate;
-        public PermissionType PermissionType { get; } = permissionType;
+        private Permission(int id,
+            string employeeForename,
+            string employeeSurname,
+            int permissionTypeId,
+            DateOnly permissionDate) : base(id)
+        {
+            EmployeeForename = employeeForename;
+            EmployeeSurname = employeeSurname;
+            PermissionTypeId = permissionTypeId;
+            PermissionDate = permissionDate;
+        }
+
+        public string EmployeeForename { get; }
+        public string EmployeeSurname { get; }
+        public int PermissionTypeId { get; }
+        public DateOnly PermissionDate { get; }
+        
+        public static Permission Create(string forename, string surname, int permissionType)
+        {
+            var permissionDate = DateOnly.FromDateTime(DateTime.UtcNow);
+            
+            return new Permission(
+                default,
+                forename,
+                surname,
+                permissionType,
+                permissionDate);
+        }
     }
 }

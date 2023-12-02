@@ -4,11 +4,11 @@ N5 company requests a Web API for registering user permissions, to carry out thi
 
 - Create a **Permissions** table with the following fields:
 
-![Permissions](img/permissions.png){align:center}
+![Permissions](img/permissions.png)
 
 - - Create a **PermissionTypes** table with the following fields:
 
-![Permissions Table](img/permission_types.png){align:center}
+![Permissions Table](img/permission_types.png)
 
 - Create relationship between **Permission** and **PermissionType.**
 - Create a Web API using net core on Visual Studio and persist data on SQL Server.

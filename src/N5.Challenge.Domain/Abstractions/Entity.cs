@@ -2,5 +2,5 @@
 
 public abstract class Entity(int id)
 {
-    public int Id { get; init; } = id;
+    public int Id { get; } = id;
 }

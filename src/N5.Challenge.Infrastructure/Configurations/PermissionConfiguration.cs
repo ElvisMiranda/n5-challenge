@@ -39,6 +39,6 @@ internal sealed class PermissionConfiguration : IEntityTypeConfiguration<Permiss
 
         builder.HasOne<PermissionType>()
             .WithMany()
-            .HasForeignKey(permission => permission.PermissionType);
+            .HasForeignKey(permission => permission.PermissionTypeId);
     }
 }

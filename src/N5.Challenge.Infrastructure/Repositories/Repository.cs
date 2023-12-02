@@ -9,6 +9,8 @@ namespace N5.Challenge.Infrastructure.Repositories
     {
         protected ApplicationDbContext DbContext { get; } = dbContext;
 
+        public IQueryable<TEntity> All() => DbContext.Set<TEntity>().AsQueryable();
+
         public void Add(TEntity entity) => DbContext.Add(entity);
 
         public void Update(TEntity entity) => DbContext.Set<TEntity>().Attach(entity).State = EntityState.Modified;
