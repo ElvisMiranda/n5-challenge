@@ -1,4 +1,4 @@
-﻿namespace N5.Challenge.Application.Permissions.GetPermission;
+﻿namespace N5.Challenge.Application.Permissions.Shared;
 
 public sealed class PermissionResponse
 {

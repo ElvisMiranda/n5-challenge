@@ -36,7 +36,9 @@ public class ModifyPermissionCommandHandler : ICommandHandler<ModifyPermissionCo
         {
             return Result.Failure(PermissionErrors.PermissionNotFound);
         }
-        
+
+        permission.Update(request.Forename, request.Surname, request.PermissionType);
+
         _permissionRepository.Update(permission);
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);

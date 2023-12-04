@@ -18,7 +18,7 @@ public partial class PermissionTests
             .Returns(Permissions());
         
         var query = new GetPermissionsQuery();
-        var handler = new GetPermissionQueryHandler(permissionRepository.Object);
+        var handler = new GetPermissionsQueryHandler(permissionRepository.Object);
 
         // Assert
         var result = await handler.Handle(query, default);

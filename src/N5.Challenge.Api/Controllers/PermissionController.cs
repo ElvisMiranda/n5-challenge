@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 using N5.Challenge.Api.Model;
+using N5.Challenge.Application.Permissions.GetPermission;
 using N5.Challenge.Application.Permissions.GetPermissions;
 using N5.Challenge.Application.Permissions.ModifyPermission;
 using N5.Challenge.Application.Permissions.RequestPermission;
@@ -18,6 +19,20 @@ public class PermissionController : ControllerBase
     public PermissionController(ISender sender)
     {
         _sender = sender;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPermission(int id, CancellationToken cancellationToken)
+    {
+        var query = new GetPermissionQuery(id);
+        var response = await _sender.Send(query, cancellationToken);
+
+        if (response.IsFailure)
+        {
+            return NotFound(response.Error.Description);
+        }
+
+        return Ok(response.Value);
     }
 
     [HttpGet]
@@ -43,10 +58,10 @@ public class PermissionController : ControllerBase
 
         if (response.IsFailure)
         {
-            return BadRequest(response.Error);
+            return BadRequest(response.Error.Description);
         }
 
-        return Ok(response.Value);
+        return CreatedAtAction(nameof(GetPermission), new { id = response.Value }, request);
     }
 
     [HttpPut("{id}")]
@@ -58,9 +73,9 @@ public class PermissionController : ControllerBase
 
         if (response.IsFailure)
         {
-            return BadRequest(response.Error);
+            return BadRequest(response.Error.Description);
         }
 
-        return Ok(response);
+        return NoContent();
     }
 }

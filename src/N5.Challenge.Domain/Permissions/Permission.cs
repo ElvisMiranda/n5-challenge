@@ -16,10 +16,10 @@ namespace N5.Challenge.Domain.Permissions
             PermissionDate = permissionDate;
         }
 
-        public string EmployeeForename { get; }
-        public string EmployeeSurname { get; }
-        public int PermissionTypeId { get; }
-        public DateOnly PermissionDate { get; }
+        public string EmployeeForename { get; private set; }
+        public string EmployeeSurname { get; private set; }
+        public int PermissionTypeId { get; private set; }
+        public DateOnly PermissionDate { get; private set; }
         
         public static Permission Create(string forename, string surname, int permissionType)
         {
@@ -31,6 +31,15 @@ namespace N5.Challenge.Domain.Permissions
                 surname,
                 permissionType,
                 permissionDate);
+        }
+
+        public void Update(string forename, string surname, int permissionType)
+        {
+            EmployeeForename = forename;
+            EmployeeSurname = surname;
+            PermissionTypeId = permissionType;
+
+            PermissionDate = DateOnly.FromDateTime(DateTime.UtcNow);
         }
     }
 }
