@@ -4,8 +4,6 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Microsoft.AspNetCore.Mvc.Testing;
-
 namespace N5.Challenge.IntegrationTests;
 
 public class PermissionsIntegrationTests : IClassFixture<TestingWebAppFactory<Program>>
