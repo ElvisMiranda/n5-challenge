@@ -18,5 +18,10 @@ internal sealed class PermissionTypeConfiguration : IEntityTypeConfiguration<Per
         builder.Property(permissionType => permissionType.Description)
             .HasComment("Permission Description")
             .IsRequired();
+
+        builder.HasData(
+            new PermissionType(1, "Admin"),
+            new PermissionType(2, "Manager")
+        );
     }
 }

@@ -1,6 +1,6 @@
 @N5.Challenge.Api_HostAddress = http://localhost:5169
 
-GET {{N5.Challenge.Api_HostAddress}}/weatherforecast/
+GET {{N5.Challenge.Api_HostAddress}}/swagger/
 Accept: application/json
 
 ###

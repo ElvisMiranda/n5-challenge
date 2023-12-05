@@ -26,7 +26,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N5.Challenge.Api", "src\N5.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{740B688E-1149-46EC-8D12-0A8B7FF932A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N5.Challenge.Tests", "test\N5.Challenge.Tests\N5.Challenge.Tests.csproj", "{074331E7-B362-49CF-B571-B92073041229}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N5.Challenge.Tests", "test\N5.Challenge.Tests\N5.Challenge.Tests.csproj", "{074331E7-B362-49CF-B571-B92073041229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N5.Challenge.IntegrationTests", "src\N5.Challenge.IntegrationTests\N5.Challenge.IntegrationTests.csproj", "{A8AD9257-B7D6-439D-8F3A-C0CAE3947601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,10 @@ Global
 		{074331E7-B362-49CF-B571-B92073041229}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{074331E7-B362-49CF-B571-B92073041229}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{074331E7-B362-49CF-B571-B92073041229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8AD9257-B7D6-439D-8F3A-C0CAE3947601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8AD9257-B7D6-439D-8F3A-C0CAE3947601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8AD9257-B7D6-439D-8F3A-C0CAE3947601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8AD9257-B7D6-439D-8F3A-C0CAE3947601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{4B2B6847-8E15-4A28-BA73-6857179D216C} = {2C5594B6-5779-4C93-A860-4253E12B553E}
 		{98DB9FE2-85B3-4D84-8B1F-F87774CA135D} = {2C5594B6-5779-4C93-A860-4253E12B553E}
 		{074331E7-B362-49CF-B571-B92073041229} = {740B688E-1149-46EC-8D12-0A8B7FF932A1}
+		{A8AD9257-B7D6-439D-8F3A-C0CAE3947601} = {740B688E-1149-46EC-8D12-0A8B7FF932A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {728B1C1F-C0EA-4CCE-A63D-EBD38B510FBD}

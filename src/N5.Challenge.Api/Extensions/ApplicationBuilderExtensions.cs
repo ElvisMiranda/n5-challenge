@@ -13,7 +13,13 @@ public static class ApplicationBuilderExtensions
 
         using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         
-        dbContext.Database.Migrate();
+        if (!dbContext.Database.ProviderName.Equals("Microsoft.EntityFrameworkCore.InMemory")) 
+            dbContext.Database.Migrate();
+    }
+
+    public static void UseCustomEndpointLogging(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<LoggingMiddleware>();
     }
 
     public static void UseCustomExceptionHandler(this IApplicationBuilder app)
