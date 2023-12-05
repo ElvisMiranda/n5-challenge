@@ -19,6 +19,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
+builder.Services.AddElasticSearch(builder.Configuration);
+
 builder.Logging.AddSerilog();
 
 var app = builder.Build();

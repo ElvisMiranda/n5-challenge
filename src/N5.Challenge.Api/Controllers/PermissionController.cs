@@ -6,6 +6,7 @@ using N5.Challenge.Api.Model;
 using N5.Challenge.Application.Permissions.GetPermission;
 using N5.Challenge.Application.Permissions.GetPermissions;
 using N5.Challenge.Application.Permissions.ModifyPermission;
+using N5.Challenge.Application.Permissions.RegisterPermissionIndex;
 using N5.Challenge.Application.Permissions.RequestPermission;
 
 namespace N5.Challenge.Api.Controllers;
@@ -15,10 +16,12 @@ namespace N5.Challenge.Api.Controllers;
 public class PermissionController : ControllerBase
 {
     private readonly ISender _sender;
+    private readonly IPublisher _publisher;
 
-    public PermissionController(ISender sender)
+    public PermissionController(ISender sender, IPublisher publisher)
     {
         _sender = sender;
+        _publisher = publisher;
     }
 
     [HttpGet("{id}")]
@@ -32,6 +35,8 @@ public class PermissionController : ControllerBase
             return NotFound(response.Error.Description);
         }
 
+        await _publisher.Publish(new RegisterIndexNotification(id), cancellationToken);
+        
         return Ok(response.Value);
     }
 
@@ -60,6 +65,8 @@ public class PermissionController : ControllerBase
         {
             return BadRequest(response.Error.Description);
         }
+        
+        await _publisher.Publish(new RegisterIndexNotification(response.Value), cancellationToken);
 
         return CreatedAtAction(nameof(GetPermission), new { id = response.Value }, request);
     }
@@ -75,6 +82,8 @@ public class PermissionController : ControllerBase
         {
             return BadRequest(response.Error.Description);
         }
+        
+        await _publisher.Publish(new RegisterIndexNotification(id), cancellationToken);
 
         return NoContent();
     }
